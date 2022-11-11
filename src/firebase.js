@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC_EALMoO7b-Mj4feWnF8Ic75F4Ms16zOc",
-  authDomain: "vue3-school-system-cd7ed.firebaseapp.com",
-  projectId: "vue3-school-system-cd7ed",
-  storageBucket: "vue3-school-system-cd7ed.appspot.com",
-  messagingSenderId: "230968419887",
-  appId: "1:230968419887:web:e719b0de7e15c5ef08c8da",
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

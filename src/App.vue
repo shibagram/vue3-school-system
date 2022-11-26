@@ -1,13 +1,17 @@
+<script lang="ts">
+  export default {
+    name: 'App',
+  };
+</script>
+
+<script setup lang="ts">
+import Chat from "./components/Chat";
+</script>
+
 <template>
   <v-app>
     <v-main>
-      <router-link to="/">home</router-link>
-      <router-link to="/about">about</router-link>
-
-      <router-view></router-view>
+      <Chat />
     </v-main>
   </v-app>
 </template>
-
-<script setup lang="ts">
-</script>

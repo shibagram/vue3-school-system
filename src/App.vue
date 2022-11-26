@@ -11,7 +11,7 @@ import Chat from "./components/Chat";
 <template>
   <v-app>
     <v-main>
-      <Chat />
+      <router-view/>
     </v-main>
   </v-app>
 </template>

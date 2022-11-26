@@ -48,13 +48,15 @@ const links = ref([
           <v-list-item
             v-for="[icon, text] in links"
             :key="icon"
+            to="/about"
             link
           >
             <template v-slot:prepend>
               <v-icon>{{ icon }}</v-icon>
             </template>
-  
-            <v-list-item-title>{{ text }}</v-list-item-title>
+            <v-list-item-title>
+                {{ text }}
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>

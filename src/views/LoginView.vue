@@ -19,10 +19,6 @@ const passwordRules = [
   v => !!v || 'パスワードは必須です。',
   v => v.length >= 8 || 'パスワードは8文字以上に設定してください。',
 ];
-
-const validate = async () => {
-  console.log("")
-}
 </script>
 
 <style scoped>
@@ -72,7 +68,6 @@ const validate = async () => {
         <v-btn
           color="success"
           class="mr-4"
-          @click="validate"
           :disabled="!valid"
         >
           ログイン

@@ -6,6 +6,23 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
+const email = ref("");
+const password = ref("");
+const valid = ref(true);
+
+const emailRules = [
+  v => !!v || 'メールアドレスは必須です。',
+  v => /.+@.+\..+/.test(v) || 'メールアドレスの形式が適切でありません。',
+]
+const passwordRules = [
+  v => !!v || 'パスワードは必須です。',
+  v => v.length >= 8 || 'パスワードは8文字以上に設定してください。',
+];
+
+const validate = async () => {
+  console.log("")
+}
 </script>
 
 <style scoped>
@@ -17,6 +34,12 @@ import { ref } from "vue";
 .subtitle {
   margin: 10px 0 30px;
   text-align: left;
+}
+.email-text-field {
+  margin-bottom: 5px;
+}
+.password-text-field {
+  margin-bottom: 5px;
 }
 </style>
 
@@ -30,25 +53,29 @@ import { ref } from "vue";
         v-model="valid"
         lazy-validation
       >
-        
         <v-text-field
           v-model="email"
           :rules="emailRules"
+          type="text"
           label="E-mail"
+          class="email-text-field"
           required
         ></v-text-field>
         <v-text-field
           v-model="password"
           :rules="passwordRules"
+          type="password"
           label="Password"
+          class="password-text-field"
           required
         ></v-text-field>
         <v-btn
           color="success"
           class="mr-4"
           @click="validate"
+          :disabled="!valid"
         >
-          送信
+          ログイン
         </v-btn>
       </v-form>
     </v-card>

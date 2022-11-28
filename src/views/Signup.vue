@@ -6,6 +6,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { auth } from "@/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const email = ref("");
 const password = ref("");
@@ -19,10 +21,25 @@ const passwordRules = [
   v => !!v || 'パスワードは必須です。',
   v => v.length >= 8 || 'パスワードは8文字以上に設定してください。',
 ];
+
+const signup: any = async () => {
+  try {
+    // todo: ここでエラー出る
+    const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+    );
+    const user = userCredential.user
+    console.log("user", userCredential)
+  } catch(error) {
+    console.log(error)
+  }
+};
 </script>
 
 <style scoped>
-.login-form {
+.signup-form {
   width: 50%;
   margin: 150px auto;
 }
@@ -44,7 +61,7 @@ const passwordRules = [
 
 <template>
   <v-app>
-    <v-card class="login-form">
+    <v-card class="signup-form">
       <v-card-title class="title">Signup</v-card-title>
       <v-card-subtitle class="subtitle">ユーザー情報を入力して下さい。</v-card-subtitle>
       <v-btn to="login" color="light-blue" class="login-btn">ログインはこちら</v-btn>
@@ -70,6 +87,7 @@ const passwordRules = [
           required
         ></v-text-field>
         <v-btn
+          @click="signup"
           color="success"
           class="mr-4"
           :disabled="!valid"

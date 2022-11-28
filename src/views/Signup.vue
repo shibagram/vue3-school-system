@@ -1,6 +1,6 @@
 <script lang="ts">
   export default {
-    name: 'LoginView',
+    name: 'Signup',
   };
 </script>
 
@@ -37,18 +37,17 @@ const passwordRules = [
 .password-text-field {
   margin-bottom: 5px;
 }
-
-.signup-btn {
-  margin-bottom: 30px;
+.login-btn {
+    margin-bottom: 30px;
 }
 </style>
 
 <template>
   <v-app>
     <v-card class="login-form">
-      <v-card-title class="title">Login</v-card-title>
+      <v-card-title class="title">Signup</v-card-title>
       <v-card-subtitle class="subtitle">ユーザー情報を入力して下さい。</v-card-subtitle>
-      <v-btn to="signup" color="light-blue" class="signup-btn">新規登録はこちら</v-btn>
+      <v-btn to="login" color="light-blue" class="login-btn">ログインはこちら</v-btn>
       <v-form
         ref="form"
         v-model="valid"
@@ -75,7 +74,7 @@ const passwordRules = [
           class="mr-4"
           :disabled="!valid"
         >
-          ログイン
+          登録
         </v-btn>
       </v-form>
     </v-card>

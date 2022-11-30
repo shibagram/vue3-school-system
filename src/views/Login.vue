@@ -10,6 +10,7 @@ import { ref } from "vue";
 const email = ref("");
 const password = ref("");
 const valid = ref(true);
+const successMessage = ref("");
 
 const emailRules = [
   v => !!v || 'メールアドレスは必須です。',
@@ -19,6 +20,11 @@ const passwordRules = [
   v => !!v || 'パスワードは必須です。',
   v => v.length >= 8 || 'パスワードは8文字以上に設定してください。',
 ];
+
+if (localStorage.successMessage) {
+  successMessage.value = localStorage.successMessage;
+  localStorage.successMessage = "";
+}
 </script>
 
 <style scoped>
@@ -40,6 +46,10 @@ const passwordRules = [
 
 .signup-btn {
   margin-bottom: 30px;
+}
+
+.success-message {
+  margin-top: 30px;
 }
 </style>
 
@@ -77,6 +87,16 @@ const passwordRules = [
         >
           ログイン
         </v-btn>
+
+        <v-alert
+          v-if="successMessage"
+          density="comfortable"
+          type="success"
+          variant="tonal"
+          class="success-message"
+        >
+          {{ successMessage }}
+        </v-alert>
       </v-form>
     </v-card>
   </v-app>

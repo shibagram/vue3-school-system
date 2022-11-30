@@ -28,12 +28,13 @@ const passwordRules = [
 
 const signup: any = async () => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(
+    await createUserWithEmailAndPassword(
         auth,
         email.value,
         password.value
     );
-    router.push ("/");
+    localStorage.successMessage = "ユーザーの新規作成に成功しました。"
+    router.push ("/login");
   } catch(error) {
     console.log(error)
     errorMessage.value = "ユーザーの新規作成に失敗しました。"

@@ -8,10 +8,14 @@
 import { ref } from "vue";
 import { auth } from "@/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from 'vue-router'
 
+const router = useRouter();
 const email = ref("");
 const password = ref("");
 const valid = ref(true);
+const errorMessage = ref("");
+
 
 const emailRules = [
   v => !!v || 'メールアドレスは必須です。',
@@ -24,16 +28,15 @@ const passwordRules = [
 
 const signup: any = async () => {
   try {
-    // todo: ここでエラー出る
     const userCredential = await createUserWithEmailAndPassword(
         auth,
         email.value,
         password.value
     );
-    const user = userCredential.user
-    console.log("user", userCredential)
+    router.push ("/");
   } catch(error) {
     console.log(error)
+    errorMessage.value = "ユーザーの新規作成に失敗しました。"
   }
 };
 </script>
@@ -55,7 +58,10 @@ const signup: any = async () => {
   margin-bottom: 5px;
 }
 .login-btn {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
+}
+.error-message {
+  margin-top: 30px;
 }
 </style>
 
@@ -94,6 +100,14 @@ const signup: any = async () => {
         >
           登録
         </v-btn>
+
+        <v-alert
+          v-if="errorMessage"
+          type="error"
+          class="error-message"
+        >
+          {{ errorMessage }}
+        </v-alert>
       </v-form>
     </v-card>
   </v-app>

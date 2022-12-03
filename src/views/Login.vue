@@ -6,11 +6,16 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { auth } from "@/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from 'vue-router'
 
+const router = useRouter();
 const email = ref("");
 const password = ref("");
 const valid = ref(true);
 const successMessage = ref("");
+const errorMessage = ref("");
 
 const emailRules = [
   v => !!v || 'メールアドレスは必須です。',
@@ -24,6 +29,17 @@ const passwordRules = [
 if (localStorage.successMessage) {
   successMessage.value = localStorage.successMessage;
   localStorage.successMessage = "";
+}
+
+const signin: any = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    router.push ("/");
+    console.log("signin");
+  } catch (error) {
+    console.log(error);
+    errorMessage.value = "ユーザーのログインに失敗しました。"
+  };
 }
 </script>
 
@@ -49,6 +65,9 @@ if (localStorage.successMessage) {
 }
 
 .success-message {
+  margin-top: 30px;
+}
+.error-message {
   margin-top: 30px;
 }
 </style>
@@ -81,6 +100,7 @@ if (localStorage.successMessage) {
           required
         ></v-text-field>
         <v-btn
+          @click="signin(auth, email, password)"
           color="success"
           class="mr-4"
           :disabled="!valid"
@@ -96,6 +116,13 @@ if (localStorage.successMessage) {
           class="success-message"
         >
           {{ successMessage }}
+        </v-alert>
+        <v-alert
+          v-if="errorMessage"
+          type="error"
+          class="error-message"
+        >
+          {{ errorMessage }}
         </v-alert>
       </v-form>
     </v-card>

@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup';
+import { auth } from "@/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,4 +26,16 @@ const router = createRouter({
   ]
 })
 
+// todo: 惜しいけど違うので修正
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth) {
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        return {
+          path: '/login',
+        }
+      }
+    })
+  }
+})
 export default router

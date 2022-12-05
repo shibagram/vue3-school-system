@@ -12,6 +12,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+      meta: { requiresAuth: true }
     },
     {
       path: '/login',
@@ -26,16 +27,12 @@ const router = createRouter({
   ]
 })
 
-// todo: 惜しいけど違うので修正
-router.beforeEach((to, from) => {
-  if (to.meta.requiresAuth) {
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        return {
-          path: '/login',
-        }
-      }
-    })
+// todo: ホーム画面でリロードした時にログイン画面に飛んでしまうので後で修正
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !auth.currentUser) {
+    next({path: '/login'});
+  } else {
+    next();
   }
 })
 export default router

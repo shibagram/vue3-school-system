@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
-import "firebase/firestore";
-import "firebase/storage";
 import { getAuth } from "firebase/auth";
-import "firebase/functions";
-// import * as firebaseui from "firebaseui";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,10 +13,9 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app: any = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-// export const db = firebase.firestore();
-// export const storage = firebase.storage();
-export const auth: any = getAuth(app);
-// export const functions = firebase.functions();
-// export const ui = new firebaseui.auth.AuthUI(firebase.auth());
+export const auth = getAuth(app);
+export const storage = getStorage(app);
+export const db = getFirestore(app);
+export const functions = getFunctions(app);

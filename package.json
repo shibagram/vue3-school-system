@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "firebase": "^9.14.0",
+    "firebase-admin": "^11.3.0",
+    "firebase-functions": "^4.1.0",
     "firebaseui": "^6.0.2",
     "roboto-fontface": "*",
     "vue": "^3.2.38",

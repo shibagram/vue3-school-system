@@ -10,5 +10,5 @@ import { ref } from 'vue';
 </script>
 
 <template>
-  <div>chat</div>  
+  <div>カリキュラム一覧</div>
 </template>

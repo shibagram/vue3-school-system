@@ -1,12 +1,12 @@
 <script lang="ts">
   export default {
-    name: 'HomeView',
+    name: 'Curriculums',
   };
 </script>
 
 <script setup lang="ts">
 import Sidebar from "../components/layouts/Sidebar.vue";
-import HomeComponent from "../components/HomeComponent.vue";
+import CurriculumImageList from "../components/CurriculumImageList.vue";
 
 </script>
 
@@ -17,7 +17,7 @@ import HomeComponent from "../components/HomeComponent.vue";
   <v-app>
     <Sidebar/>
     <v-main>
-      <HomeComponent/>
+      <CurriculumImageList/>
     </v-main>
   </v-app>
 </template>

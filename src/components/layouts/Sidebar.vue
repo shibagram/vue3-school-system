@@ -12,9 +12,9 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter();
 const links = ref([
-  ['mdi-home', 'Inbox'],
-  ['mdi-account-box', 'Send'],
-  ['mdi-gavel', 'Trash'],
+  ['mdi-home', 'ホーム', '/'],
+  ['mdi-account-box', 'カリキュラム', '/curriculums'],
+  ['mdi-gavel', 'メンタリング', '/'],
 ])
 
 const logout = async () => {
@@ -38,10 +38,11 @@ const logout = async () => {
     <v-list color="transparent">
       <!-- todo: アイコンが表示されない原因とtoが設定できない原因を調査 -->
       <v-list-item
-          v-for="[icon, text] in links"
-          :key="icon"
-          :prepend-icon="icon"
-          :title="text"
+        v-for="[icon, text, link] in links"
+        :key="icon"
+        :prepend-icon="icon"
+        :title="text"
+        :href="link"
       >
       </v-list-item>
     </v-list>

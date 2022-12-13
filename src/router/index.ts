@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import Curriculums from '../views/Curriculums.vue';
+import Curriculums from '../views/curriculums/Curriculums.vue';
+import VueCurriculumTable from '../views/curriculums/VueCurriculumTable.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup';
 import { auth } from "@/firebase";
@@ -18,6 +19,12 @@ const router = createRouter({
       path: '/curriculums',
       name: 'curriculums',
       component: Curriculums,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/curriculums/vue',
+      name: 'vue-curriculum-table',
+      component: VueCurriculumTable,
       meta: { requiresAuth: true }
     },
     {

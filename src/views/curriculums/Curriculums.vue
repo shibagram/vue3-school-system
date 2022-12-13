@@ -5,8 +5,8 @@
 </script>
 
 <script setup lang="ts">
-import Sidebar from "../components/layouts/Sidebar.vue";
-import CurriculumImageList from "../components/CurriculumImageList.vue";
+import Sidebar from "../../components/layouts/Sidebar.vue";
+import CurriculumImageList from "../../components/CurriculumImageList.vue";
 
 </script>
 

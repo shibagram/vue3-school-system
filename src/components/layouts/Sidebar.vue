@@ -14,7 +14,7 @@ const router = useRouter();
 const links = ref([
   ['mdi-home', 'ホーム', '/'],
   ['mdi-account-box', 'カリキュラム', '/curriculums'],
-  ['mdi-gavel', 'メンタリング', '/'],
+  ['mdi-gavel', 'メンタリング', 'https://talky.io/'],
 ])
 
 const logout = async () => {

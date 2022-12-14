@@ -8,11 +8,13 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@videojs-player/vue": "^1.0.0",
     "firebase": "^9.14.0",
     "firebase-admin": "^11.3.0",
     "firebase-functions": "^4.1.0",
     "firebaseui": "^6.0.2",
     "roboto-fontface": "*",
+    "video.js": "^7.20.3",
     "vue": "^3.2.38",
     "vue-router": "^4.1.6",
     "vuetify": "^3.0.4",

@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import Sidebar from "../components/layouts/Sidebar.vue";
 import { VideoPlayer } from '@videojs-player/vue'
-import 'video.js/dist/video-js.css;
+import 'video.js/dist/video-js.css';
 </script>
 
 <style>

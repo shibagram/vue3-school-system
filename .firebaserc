@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "vue3-school-system-39164"
-  }
+    "vue3-school-system": "vue3-school-system-cd7ed",
+    "default": "vue3-school-system-cd7ed"
+  },
+  "targets": {},
+  "etags": {}
 }
